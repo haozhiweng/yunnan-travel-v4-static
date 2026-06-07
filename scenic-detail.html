@@ -1,116 +1,483 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>丽江古城 - 云南旅游官网</title>
+
+<title>玉龙雪山 - 云南旅游官网</title>
+
 <script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+body{
+background:#f5f7fa;
+}
+
+.gallery-thumb{
+cursor:pointer;
+transition:.3s;
+}
+
+.gallery-thumb:hover{
+opacity:.8;
+transform:scale(1.05);
+}
+
+</style>
+
 </head>
 
-<body class="bg-gray-50">
+<body>
 
 <!-- 顶部导航 -->
-<header class="bg-emerald-600 text-white">
-<div class="max-w-7xl mx-auto flex justify-between items-center p-5">
-<a href="index.html" class="text-3xl font-bold">云南旅游官网</a>
+
+<header class="bg-white shadow sticky top-0 z-50">
+
+<div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+
+<a href="index.html"
+class="text-2xl font-bold text-emerald-600">
+
+云南旅游
+
+</a>
+
 <nav class="space-x-6">
+
 <a href="index.html">首页</a>
-<a href="scenic.html" class="font-bold">景点</a>
+
+<a href="scenic.html"
+class="text-emerald-600 font-bold">
+景点
+</a>
+
 <a href="hotel.html">酒店</a>
-<a href="ai.html">AI行程规划</a>
-<a href="community.html">攻略社区</a>
+
+<a href="community.html">攻略</a>
+
+<a href="ai.html">AI规划</a>
+
 </nav>
+
 </div>
+
 </header>
 
-<!-- 景点大图 -->
-<section class="max-w-7xl mx-auto mt-6">
-<img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" class="w-full h-96 object-cover rounded-2xl shadow">
-</section>
+<!-- 景点图片 -->
 
-<!-- 景点介绍 -->
-<section class="max-w-7xl mx-auto mt-8 px-6">
-<h1 class="text-4xl font-bold mb-4">丽江古城</h1>
-<p class="text-gray-700 mb-4">
-丽江古城是世界文化遗产，也是云南最具代表性的旅游景点。这里有古色古香的街道、纳西族文化和迷人的自然景观。
+<section class="max-w-7xl mx-auto px-6 py-8">
+
+<div class="grid lg:grid-cols-3 gap-6">
+
+<div class="lg:col-span-2">
+
+<img
+id="mainImage"
+src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963"
+class="w-full h-[500px] object-cover rounded-2xl shadow">
+
+<div class="grid grid-cols-4 gap-3 mt-4">
+
+<img
+onclick="changeImage(this)"
+src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963"
+class="gallery-thumb h-24 w-full object-cover rounded-xl">
+
+<img
+onclick="changeImage(this)"
+src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+class="gallery-thumb h-24 w-full object-cover rounded-xl">
+
+<img
+onclick="changeImage(this)"
+src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b"
+class="gallery-thumb h-24 w-full object-cover rounded-xl">
+
+<img
+onclick="changeImage(this)"
+src="https://images.unsplash.com/photo-1469474968028-56623f02e42e"
+class="gallery-thumb h-24 w-full object-cover rounded-xl">
+
+</div>
+
+</div>
+
+<!-- 景点信息 -->
+
+<div>
+
+<div class="bg-white rounded-2xl shadow p-6">
+
+<h1 class="text-3xl font-bold mb-3">
+玉龙雪山
+</h1>
+
+<div class="flex items-center gap-3 mb-4">
+
+<span
+class="bg-yellow-500 text-white px-3 py-1 rounded">
+4.9
+</span>
+
+<span class="text-gray-600">
+超棒 · 12.6万点评
+</span>
+
+</div>
+
+<p class="text-gray-500 mb-6">
+云南省丽江市玉龙纳西族自治县
 </p>
 
-<div class="grid md:grid-cols-3 gap-6">
-<div class="bg-white p-5 rounded-2xl shadow">
-<h3 class="font-bold mb-2">开放时间</h3>
-<p>全天开放</p>
+<div class="space-y-3 mb-6">
+
+<div class="flex justify-between">
+
+<span>
+开放时间
+</span>
+
+<span class="font-bold">
+08:00-17:00
+</span>
+
 </div>
-<div class="bg-white p-5 rounded-2xl shadow">
-<h3 class="font-bold mb-2">门票价格</h3>
-<p>80元/人</p>
+
+<div class="flex justify-between">
+
+<span>
+景区等级
+</span>
+
+<span class="font-bold text-red-500">
+AAAAA
+</span>
+
 </div>
-<div class="bg-white p-5 rounded-2xl shadow">
-<h3 class="font-bold mb-2">位置</h3>
-<p>云南省丽江市古城区</p>
+
+<div class="flex justify-between">
+
+<span>
+门票起
+</span>
+
+<span class="text-red-500 text-2xl font-bold">
+¥180
+</span>
+
 </div>
+
 </div>
+
+<button
+class="w-full bg-emerald-600 text-white py-4 rounded-xl font-bold">
+
+立即预订门票
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-<!-- 图片画廊 -->
-<section class="max-w-7xl mx-auto mt-8 px-6">
-<h2 class="text-2xl font-bold mb-4">景点图片</h2>
-<div class="grid md:grid-cols-3 gap-4">
-<img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" class="rounded-xl shadow">
-<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" class="rounded-xl shadow">
-<img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e" class="rounded-xl shadow">
+<!-- 门票 -->
+
+<section class="max-w-7xl mx-auto px-6 py-8">
+
+<h2 class="text-3xl font-bold mb-6">
+门票预订
+</h2>
+
+<div class="bg-white rounded-2xl shadow overflow-hidden">
+
+<table class="w-full">
+
+<thead class="bg-gray-100">
+
+<tr>
+
+<th class="p-4 text-left">
+票种
+</th>
+
+<th>
+说明
+</th>
+
+<th>
+价格
+</th>
+
+<th>
+操作
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr class="border-b">
+
+<td class="p-4">
+成人票
+</td>
+
+<td>
+当天有效
+</td>
+
+<td class="text-red-500 font-bold">
+¥180
+</td>
+
+<td>
+
+<button
+class="bg-emerald-600 text-white px-4 py-2 rounded">
+
+预订
+
+</button>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="p-4">
+索道套票
+</td>
+
+<td>
+含冰川公园索道
+</td>
+
+<td class="text-red-500 font-bold">
+¥320
+</td>
+
+<td>
+
+<button
+class="bg-emerald-600 text-white px-4 py-2 rounded">
+
+预订
+
+</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
 </div>
+
 </section>
 
-<!-- 游玩攻略 -->
-<section class="max-w-7xl mx-auto mt-8 px-6">
-<h2 class="text-2xl font-bold mb-4">游玩攻略</h2>
-<ul class="list-disc ml-5 text-gray-700">
-<li>最佳游玩季节：春秋两季</li>
-<li>推荐路线：古城漫步 → 四方街 → 木府 → 黑龙潭</li>
-<li>周边美食：纳西族美食、粑粑、鸡豆凉粉</li>
-<li>注意事项：请注意保管财物，人多时避免拥挤</li>
-</ul>
+<!-- 景区介绍 -->
+
+<section class="max-w-7xl mx-auto px-6 py-8">
+
+<h2 class="text-3xl font-bold mb-6">
+景区介绍
+</h2>
+
+<div class="bg-white p-8 rounded-2xl shadow">
+
+<p class="leading-8 text-gray-700">
+
+玉龙雪山位于云南省丽江市，是纳西族心中的神山，也是中国最著名的雪山景区之一。景区拥有冰川公园、蓝月谷、牦牛坪、云杉坪等多个著名景点，是云南旅游必打卡目的地。
+
+</p>
+
+</div>
+
 </section>
 
-<!-- 用户评价 -->
-<section class="max-w-7xl mx-auto mt-8 px-6">
-<h2 class="text-2xl font-bold mb-4">游客评价</h2>
+<!-- 地图 -->
+
+<section class="max-w-7xl mx-auto px-6 py-8">
+
+<h2 class="text-3xl font-bold mb-6">
+景区地图
+</h2>
+
+<iframe
+class="w-full h-96 rounded-2xl shadow"
+src="https://maps.google.com/maps?q=Yulong%20Snow%20Mountain&t=&z=11&ie=UTF8&iwloc=&output=embed">
+</iframe>
+
+</section>
+
+<!-- 游客点评 -->
+
+<section class="max-w-7xl mx-auto px-6 py-8">
+
+<h2 class="text-3xl font-bold mb-6">
+游客点评
+</h2>
 
 <div class="space-y-4">
-<div class="bg-white p-5 rounded-2xl shadow">
-<p class="font-bold">小明：</p>
-<p>非常漂亮的古城，有浓厚的民族风情，值得一游！</p>
+
+<div class="bg-white p-6 rounded-2xl shadow">
+
+<div class="font-bold mb-2">
+★★★★★ 王先生
 </div>
-<div class="bg-white p-5 rounded-2xl shadow">
-<p class="font-bold">小红：</p>
-<p>古城夜景很美，街道干净整洁，非常适合拍照。</p>
+
+<p>
+风景震撼，值得来一次。
+</p>
+
 </div>
+
+<div class="bg-white p-6 rounded-2xl shadow">
+
+<div class="font-bold mb-2">
+★★★★★ 李女士
+</div>
+
+<p>
+蓝月谷太美了，像瑞士一样。
+</p>
+
+</div>
+
 </div>
 
 </section>
 
-<!-- 推荐路线 -->
-<section class="max-w-7xl mx-auto mt-8 px-6 mb-12">
-<h2 class="text-2xl font-bold mb-4">推荐路线</h2>
+<!-- 周边酒店 -->
+
+<section class="max-w-7xl mx-auto px-6 py-8">
+
+<h2 class="text-3xl font-bold mb-6">
+周边酒店推荐
+</h2>
+
 <div class="grid md:grid-cols-3 gap-6">
-<div class="bg-white p-5 rounded-2xl shadow">
-<h3 class="font-bold mb-2">丽江-大理-香格里拉</h3>
-<p>4-5天经典路线，涵盖古城、洱海、雪山和民族村落。</p>
+
+<a href="hotel-detail.html"
+class="bg-white rounded-2xl overflow-hidden shadow">
+
+<img
+src="https://images.unsplash.com/photo-1566073771259-6a8506099945"
+class="h-52 w-full object-cover">
+
+<div class="p-4">
+
+<h3 class="font-bold">
+丽江悦榕庄
+</h3>
+
+<p class="text-red-500 font-bold mt-2">
+¥1288起
+</p>
+
 </div>
-<div class="bg-white p-5 rounded-2xl shadow">
-<h3 class="font-bold mb-2">丽江一日游</h3>
-<p>古城核心景点快速打卡，适合短途旅行者。</p>
+
+</a>
+
+<a href="hotel-detail.html"
+class="bg-white rounded-2xl overflow-hidden shadow">
+
+<img
+src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa"
+class="h-52 w-full object-cover">
+
+<div class="p-4">
+
+<h3 class="font-bold">
+雪山观景酒店
+</h3>
+
+<p class="text-red-500 font-bold mt-2">
+¥988起
+</p>
+
 </div>
-<div class="bg-white p-5 rounded-2xl shadow">
-<h3 class="font-bold mb-2">丽江-泸沽湖</h3>
-<p>自然风光路线，适合摄影爱好者和自驾游。</p>
+
+</a>
+
 </div>
-</div>
+
 </section>
 
-<footer class="bg-slate-900 text-white text-center py-8">
-<p>© 2026 云南旅游官网 V4.0</p>
+<!-- 相关攻略 -->
+
+<section class="max-w-7xl mx-auto px-6 py-8">
+
+<h2 class="text-3xl font-bold mb-6">
+相关攻略
+</h2>
+
+<div class="grid md:grid-cols-2 gap-6">
+
+<a href="community-detail.html"
+class="bg-white p-6 rounded-2xl shadow">
+
+<h3 class="font-bold text-xl mb-2">
+玉龙雪山一日游攻略
+</h3>
+
+<p class="text-gray-500">
+第一次去玉龙雪山怎么玩？
+</p>
+
+</a>
+
+<a href="community-detail.html"
+class="bg-white p-6 rounded-2xl shadow">
+
+<h3 class="font-bold text-xl mb-2">
+蓝月谷拍照指南
+</h3>
+
+<p class="text-gray-500">
+最出片机位推荐
+</p>
+
+</a>
+
+</div>
+
+</section>
+
+<footer class="bg-slate-900 text-white py-12 mt-10">
+
+<div class="text-center">
+
+© 2026 云南旅游官网
+
+</div>
+
 </footer>
+
+<script>
+
+function changeImage(img){
+
+document.getElementById(
+'mainImage'
+).src=img.src;
+
+}
+
+</script>
 
 </body>
 </html>
