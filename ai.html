@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI行程规划模拟 - 云南旅游官网</title>
+<title>AI行程规划 V4.0 - 云南旅游官网</title>
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 font-sans">
@@ -21,10 +21,24 @@
 
 <main class="max-w-4xl mx-auto mt-10 p-4">
 <section class="bg-white p-6 rounded-xl shadow-md">
-<h2 class="text-3xl font-bold mb-4">AI行程规划助手（模拟版）</h2>
+<h2 class="text-3xl font-bold mb-4">AI行程规划助手 V4.0</h2>
+<p class="mb-6 text-gray-600">输入出发城市、目的地、天数、人数、交通方式，自动生成云南旅行行程和预算</p>
+
 <div class="space-y-4">
-  <input id="destinations" type="text" placeholder="输入景点或城市，用逗号分隔" class="w-full p-3 border rounded-md">
+  <input id="fromCity" type="text" placeholder="出发城市" class="w-full p-3 border rounded-md">
+  <input id="destinations" type="text" placeholder="目的地或景点，用逗号分隔" class="w-full p-3 border rounded-md">
   <input id="days" type="number" placeholder="出行天数" class="w-full p-3 border rounded-md">
+  <select id="people" class="w-full p-3 border rounded-md">
+    <option value="1">1人</option>
+    <option value="2" selected>2人</option>
+    <option value="3">3人</option>
+    <option value="4">4人</option>
+  </select>
+  <select id="transport" class="w-full p-3 border rounded-md">
+    <option value="飞机">飞机</option>
+    <option value="高铁">高铁</option>
+    <option value="自驾" selected>自驾</option>
+  </select>
   <button id="generateBtn" class="w-full bg-green-600 text-white p-3 rounded-md hover:bg-green-700">生成行程</button>
 </div>
 </section>
@@ -41,29 +55,66 @@
 
 <script>
 document.getElementById('generateBtn').addEventListener('click', () => {
-  const destinations = document.getElementById('destinations').value.split(',').map(d=>d.trim()).filter(d=>d)
-  const days = parseInt(document.getElementById('days').value)
-  if(!destinations.length || !days){ alert('请填写景点和天数'); return }
+  const fromCity = document.getElementById('fromCity').value.trim();
+  const destinations = document.getElementById('destinations').value.split(',').map(d=>d.trim()).filter(d=>d);
+  const days = parseInt(document.getElementById('days').value);
+  const people = parseInt(document.getElementById('people').value);
+  const transport = document.getElementById('transport').value;
 
-  const resultSection = document.getElementById('result')
-  const itineraryDiv = document.getElementById('itinerary')
-  resultSection.classList.remove('hidden')
-  itineraryDiv.innerHTML = ''
+  if(!fromCity || !destinations.length || !days || !people){ alert('请完整填写信息'); return; }
 
-  // 模拟生成行程
-  for(let i=1; i<=days; i++){
-    const dayDiv = document.createElement('div')
-    dayDiv.className='p-4 border-l-4 border-green-600 bg-green-50 rounded-md'
-    const dest = destinations[(i-1)%destinations.length]
-    dayDiv.innerHTML = `<strong>第${i}天：</strong>上午游玩 <a href="scenic-detail.html" class="text-blue-600">${dest}景点</a>，下午自由活动，晚上入住 <a href="hotel-detail.html" class="text-blue-600">附近酒店</a>`
-    itineraryDiv.appendChild(dayDiv)
+  const resultSection = document.getElementById('result');
+  const itineraryDiv = document.getElementById('itinerary');
+  resultSection.classList.remove('hidden');
+  itineraryDiv.innerHTML = '';
+
+  let totalBudget = 0;
+  let transportCost = 0;
+  if(transport==='飞机') transportCost = 800*people;
+  else if(transport==='高铁') transportCost = 400*people;
+  else transportCost = 200*people;
+
+  for(let i=1;i<=days;i++){
+    const dayBudget = Math.floor(Math.random()*300) + 500;
+    totalBudget += dayBudget + transportCost/days;
+
+    const dayDiv = document.createElement('div');
+    dayDiv.className='p-5 border-l-4 border-green-600 bg-green-50 rounded-xl';
+
+    const dest = destinations[(i-1)%destinations.length];
+    dayDiv.innerHTML = `
+      <div class="flex justify-between items-center mb-2">
+        <h4 class="font-bold text-lg">第${i}天</h4>
+        <span class="text-red-500 font-bold">预算 ¥${Math.floor(dayBudget + transportCost/days)}</span>
+      </div>
+      <div class="space-y-2">
+        <p>🌄 上午：<a href="scenic-detail.html" class="text-blue-600 hover:underline">${dest}景点</a> 游玩</p>
+        <p>🍜 下午：当地特色美食体验</p>
+        <p>🛏️ 晚上：入住 <a href="hotel-detail.html" class="text-blue-600 hover:underline">精选酒店</a></p>
+      </div>
+    `;
+    itineraryDiv.appendChild(dayDiv);
   }
 
-  const summaryDiv = document.createElement('div')
-  summaryDiv.className='bg-green-50 p-4 rounded-md mt-4'
-  summaryDiv.innerHTML = `<strong>行程总结：</strong>总天数 ${days} 天，覆盖景点：${destinations.join('、')}`
-  itineraryDiv.appendChild(summaryDiv)
-})
+  const budgetDiv = document.createElement('div');
+  budgetDiv.className='bg-yellow-50 border border-yellow-300 p-5 rounded-xl mt-4';
+  budgetDiv.innerHTML = `
+    <h3 class="text-xl font-bold mb-3">💰 行程预算预估</h3>
+    <div class="grid md:grid-cols-3 gap-4">
+      <div>交通预算<br><span class="text-red-500 font-bold">¥${transportCost}</span></div>
+      <div>酒店预算<br><span class="text-red-500 font-bold">¥${days*350*people}</span></div>
+      <div>门票预算<br><span class="text-red-500 font-bold">¥${days*150*people}</span></div>
+    </div>
+    <div class="mt-4 text-2xl font-bold text-green-600">总预算：¥${Math.floor(totalBudget + days*350*people + days*150*people)}</div>
+  `;
+  itineraryDiv.appendChild(budgetDiv);
+
+  const printBtn = document.createElement('button');
+  printBtn.innerHTML='🖨️ 打印行程';
+  printBtn.className='mt-5 bg-green-600 text-white px-6 py-3 rounded-xl hover:bg-green-700';
+  printBtn.onclick=()=>window.print();
+  itineraryDiv.appendChild(printBtn);
+});
 </script>
 
 </body>
