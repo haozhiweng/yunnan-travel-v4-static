@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>丽江悦榕庄 - 云南旅游官网</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<style>
+/* 房型切换动画 */
+.hidden { display: none; }
+</style>
 </head>
-
 <body class="bg-gray-50">
 
 <!-- 顶部导航 -->
@@ -26,14 +28,24 @@
 
 <!-- 酒店轮播图 -->
 <section class="max-w-7xl mx-auto mt-6 px-4">
-<div class="relative rounded-3xl overflow-hidden shadow-lg">
-<img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600" class="w-full h-96 object-cover">
+<div class="relative rounded-3xl overflow-hidden shadow-lg h-96">
+
+<!-- 图片列表 -->
+<img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600" class="w-full h-full object-cover carousel-slide">
+<img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1600" class="w-full h-full object-cover carousel-slide hidden">
+<img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1600" class="w-full h-full object-cover carousel-slide hidden">
+
+<!-- 左右箭头 -->
+<button id="prev" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/40 text-white px-3 py-1 rounded-full hover:bg-black/60">‹</button>
+<button id="next" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/40 text-white px-3 py-1 rounded-full hover:bg-black/60">›</button>
+
 </div>
 </section>
 
-<!-- 酒店信息 + 预订 -->
+<!-- 酒店信息 + 房型选择 + 预订 -->
 <section class="max-w-7xl mx-auto px-4 py-10 grid lg:grid-cols-3 gap-8">
-<!-- 酒店介绍 -->
+
+<!-- 左侧酒店信息 -->
 <div class="lg:col-span-2 bg-white rounded-3xl shadow p-8">
 <h1 class="text-4xl font-bold mb-3">丽江悦榕庄</h1>
 <div class="flex items-center gap-4 mb-6">
@@ -44,69 +56,39 @@
 坐落于玉龙雪山脚下，融合纳西族文化与国际奢华酒店服务，拥有雪山景观客房、私汤别墅、SPA中心与特色餐厅。
 </p>
 
-<!-- 房型 -->
-<h2 class="text-2xl font-bold mb-4">热门房型</h2>
-<div class="grid md:grid-cols-3 gap-6 mb-8">
-<div class="bg-gray-50 rounded-2xl overflow-hidden shadow">
-<img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600" class="h-56 w-full object-cover">
-<div class="p-4">
-<h3 class="font-bold text-lg mb-2">山景大床房</h3>
+<!-- 房型选择 -->
+<h2 class="text-2xl font-bold mb-4">房型选择</h2>
+<div class="flex gap-4 mb-4">
+<button class="room-btn px-4 py-2 rounded-lg bg-emerald-500 text-white font-bold" data-room="0">山景大床房</button>
+<button class="room-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-700 font-bold" data-room="1">雪山景观套房</button>
+<button class="room-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-700 font-bold" data-room="2">独栋别墅</button>
+</div>
+
+<!-- 房型展示 -->
+<div id="room-0" class="room-slide">
+<img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600" class="w-full h-56 object-cover rounded-xl mb-4">
+<p class="font-bold text-lg mb-2">山景大床房</p>
 <p class="text-gray-500 mb-2">40㎡ · 双人入住</p>
 <p class="text-red-500 font-bold text-xl">¥1288/晚</p>
 </div>
-</div>
-<div class="bg-gray-50 rounded-2xl overflow-hidden shadow">
-<img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600" class="h-56 w-full object-cover">
-<div class="p-4">
-<h3 class="font-bold text-lg mb-2">雪山景观套房</h3>
+
+<div id="room-1" class="room-slide hidden">
+<img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600" class="w-full h-56 object-cover rounded-xl mb-4">
+<p class="font-bold text-lg mb-2">雪山景观套房</p>
 <p class="text-gray-500 mb-2">65㎡ · 阳台景观</p>
 <p class="text-red-500 font-bold text-xl">¥1988/晚</p>
 </div>
-</div>
-<div class="bg-gray-50 rounded-2xl overflow-hidden shadow">
-<img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=600" class="h-56 w-full object-cover">
-<div class="p-4">
-<h3 class="font-bold text-lg mb-2">独栋别墅</h3>
+
+<div id="room-2" class="room-slide hidden">
+<img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=600" class="w-full h-56 object-cover rounded-xl mb-4">
+<p class="font-bold text-lg mb-2">独栋别墅</p>
 <p class="text-gray-500 mb-2">120㎡ · 私人庭院</p>
 <p class="text-red-500 font-bold text-xl">¥3688/晚</p>
 </div>
-</div>
-</div>
-
-<!-- 酒店设施 -->
-<h2 class="text-2xl font-bold mb-4">酒店设施</h2>
-<div class="grid md:grid-cols-4 gap-6 mb-8">
-<div class="bg-white p-6 rounded-2xl shadow text-center">🏊 游泳池</div>
-<div class="bg-white p-6 rounded-2xl shadow text-center">💆 SPA中心</div>
-<div class="bg-white p-6 rounded-2xl shadow text-center">🍽 中西餐厅</div>
-<div class="bg-white p-6 rounded-2xl shadow text-center">🚗 免费停车</div>
-</div>
-
-<!-- 酒店位置 -->
-<h2 class="text-2xl font-bold mb-4">酒店位置</h2>
-<div class="bg-white rounded-2xl shadow p-6 mb-8">
-<p>📍 云南省丽江市束河古镇附近</p>
-<p class="text-gray-500 mt-2">距离丽江古城约15分钟车程</p>
-</div>
-
-<!-- 用户评价 -->
-<h2 class="text-2xl font-bold mb-4">住客评价</h2>
-<div class="space-y-6 mb-8">
-<div class="bg-white p-4 rounded-2xl shadow">
-<h3 class="font-bold">王先生</h3>
-<p class="text-yellow-500">★★★★★</p>
-<p class="mt-2 text-gray-600">房间景观非常棒，可以直接看到玉龙雪山，早餐也很丰富。</p>
-</div>
-<div class="bg-white p-4 rounded-2xl shadow">
-<h3 class="font-bold">李女士</h3>
-<p class="text-yellow-500">★★★★★</p>
-<p class="mt-2 text-gray-600">服务非常专业，适合蜜月和家庭出游。</p>
-</div>
-</div>
 
 </div>
 
-<!-- 右侧预订 -->
+<!-- 右侧预订栏 -->
 <div class="sticky top-6">
 <div class="bg-white rounded-3xl shadow p-6">
 <div class="text-center mb-4">
@@ -120,7 +102,42 @@
 
 </section>
 
-<!-- 页脚 -->
+<!-- JS 动态效果 -->
+<script>
+// 轮播图
+let slides = document.querySelectorAll('.carousel-slide');
+let currentIndex = 0;
+document.getElementById('next').addEventListener('click', () => {
+    slides[currentIndex].classList.add('hidden');
+    currentIndex = (currentIndex + 1) % slides.length;
+    slides[currentIndex].classList.remove('hidden');
+});
+document.getElementById('prev').addEventListener('click', () => {
+    slides[currentIndex].classList.add('hidden');
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    slides[currentIndex].classList.remove('hidden');
+});
+// 自动轮播
+setInterval(() => {
+    slides[currentIndex].classList.add('hidden');
+    currentIndex = (currentIndex + 1) % slides.length;
+    slides[currentIndex].classList.remove('hidden');
+}, 5000);
+
+// 房型切换
+const roomButtons = document.querySelectorAll('.room-btn');
+const roomSlides = document.querySelectorAll('.room-slide');
+roomButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        roomButtons.forEach(b => b.classList.replace('bg-emerald-500','bg-gray-200') && b.classList.replace('text-white','text-gray-700'));
+        btn.classList.add('bg-emerald-500','text-white');
+        const roomId = btn.dataset.room;
+        roomSlides.forEach(slide => slide.classList.add('hidden'));
+        document.getElementById('room-' + roomId).classList.remove('hidden');
+    });
+});
+</script>
+
 <footer class="bg-gray-900 text-white text-center py-8">
 <p>© 2026 云南旅游官网 V4.0</p>
 </footer>
