@@ -1,224 +1,142 @@
-<section class="max-w-7xl mx-auto px-6 py-8">
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>云南酒店搜索 - 云南旅游官网</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+body { background:#f5f7fa; }
+.hotel-card { transition:.3s; }
+.hotel-card:hover { transform:translateY(-4px); box-shadow:0 12px 28px rgba(0,0,0,.15); }
+</style>
+</head>
+<body>
 
-<div class="grid lg:grid-cols-3 gap-4">
-
-<div class="lg:col-span-2">
-
-<img
-id="mainImage"
-src="https://images.unsplash.com/photo-1566073771259-6a8506099945"
-class="w-full h-[500px] object-cover rounded-2xl"
-/>
-
-<div class="grid grid-cols-4 gap-3 mt-3">
-
-<img onclick="changeImage(this)"
-src="https://images.unsplash.com/photo-1566073771259-6a8506099945"
-class="cursor-pointer rounded-xl h-24 object-cover"/>
-
-<img onclick="changeImage(this)"
-src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa"
-class="cursor-pointer rounded-xl h-24 object-cover"/>
-
-<img onclick="changeImage(this)"
-src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267"
-class="cursor-pointer rounded-xl h-24 object-cover"/>
-
-<img onclick="changeImage(this)"
-src="https://images.unsplash.com/photo-1582719508461-905c673771fd"
-class="cursor-pointer rounded-xl h-24 object-cover"/>
-
+<!-- 导航 -->
+<header class="bg-white shadow sticky top-0 z-50">
+<div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+<a href="index.html" class="text-2xl font-bold text-emerald-600">云南旅游</a>
+<nav class="space-x-6 font-medium">
+<a href="index.html">首页</a>
+<a href="scenic.html">景点</a>
+<a href="hotel.html" class="text-emerald-600">酒店</a>
+<a href="community.html">攻略</a>
+<a href="ai.html">AI规划</a>
+</nav>
 </div>
+</header>
 
+<!-- Banner + 搜索 -->
+<section class="relative h-[320px]">
+<img src="https://images.unsplash.com/photo-1566073771259-6a8506099945" class="w-full h-full object-cover"/>
+<div class="absolute inset-0 bg-black/40"></div>
+<div class="absolute inset-0 flex flex-col justify-center items-center text-white">
+<h1 class="text-5xl font-bold mb-4">云南精选酒店</h1>
+<p class="text-xl">搜索高评分酒店与特色民宿</p>
 </div>
-<div>
+</section>
 
+<section class="max-w-7xl mx-auto -mt-16 relative z-10">
 <div class="bg-white rounded-2xl shadow-lg p-6">
-
-<h1 class="text-3xl font-bold mb-3">
-丽江悦榕庄
-</h1>
-
-<div class="flex items-center gap-2 mb-4">
-
-<span class="bg-yellow-500 text-white px-3 py-1 rounded">
-4.9
-</span>
-
-<span class="text-gray-600">
-超棒 · 2386条点评
-</span>
-
+<div class="grid md:grid-cols-5 gap-4">
+<input type="text" placeholder="目的地" class="border rounded-lg p-3"/>
+<input type="date" class="border rounded-lg p-3"/>
+<input type="date" class="border rounded-lg p-3"/>
+<select class="border rounded-lg p-3">
+<option>1位成人</option>
+<option>2位成人</option>
+<option>3位成人</option>
+</select>
+<button class="bg-emerald-600 text-white rounded-lg">搜索酒店</button>
 </div>
-
-<p class="text-gray-600 mb-4">
-云南省丽江市古城区束河古镇
-</p>
-
-<div class="flex flex-wrap gap-2 mb-6">
-
-<span class="bg-green-100 text-green-600 px-3 py-1 rounded-full">
-免费早餐
-</span>
-
-<span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full">
-雪山景观
-</span>
-
-<span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full">
-五星酒店
-</span>
-
 </div>
+</section>
 
-<div class="text-4xl font-bold text-red-500 mb-4">
-¥<span id="roomPrice">1288</span>
+<!-- 筛选栏 -->
+<section class="max-w-7xl mx-auto py-6 px-6 flex flex-wrap gap-4">
+<button class="bg-white px-4 py-2 rounded-full shadow text-gray-700">价格</button>
+<button class="bg-white px-4 py-2 rounded-full shadow text-gray-700">星级</button>
+<button class="bg-white px-4 py-2 rounded-full shadow text-gray-700">酒店类型</button>
+<button class="bg-white px-4 py-2 rounded-full shadow text-gray-700">更多筛选</button>
+</section>
+
+<!-- 酒店列表 -->
+<section class="max-w-7xl mx-auto py-6 px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- 酒店卡片模板 -->
+<a href="hotel-detail.html">
+<div class="hotel-card bg-white rounded-2xl overflow-hidden shadow flex flex-col">
+<img src="https://images.unsplash.com/photo-1566073771259-6a8506099945" class="h-64 w-full object-cover"/>
+<div class="p-4 flex-1 flex flex-col justify-between">
+<div>
+<h3 class="text-xl font-bold mb-1">丽江悦榕庄</h3>
+<div class="text-yellow-500 mb-2">★★★★★ 4.9分</div>
+<p class="text-gray-600 mb-2">丽江市 · 束河古镇</p>
+<div class="flex gap-2 flex-wrap">
+<span class="bg-emerald-100 text-emerald-600 px-3 py-1 rounded-full text-sm">免费早餐</span>
+<span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">雪山景观</span>
 </div>
-
-<p class="text-gray-500 mb-6">
-含税参考价
-</p>
-
-<button
-class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-4 rounded-xl text-lg font-bold">
-立即预订
-</button>
-
 </div>
-
+<div class="mt-4 text-right">
+<div class="text-red-500 text-2xl font-bold">¥1288</div>
+<div class="text-gray-500 text-sm">起/晚</div>
 </div>
-
 </div>
+</div>
+</a>
+
+<!-- 酒店2 -->
+<a href="hotel-detail.html">
+<div class="hotel-card bg-white rounded-2xl overflow-hidden shadow flex flex-col">
+<img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa" class="h-64 w-full object-cover"/>
+<div class="p-4 flex-1 flex flex-col justify-between">
+<div>
+<h3 class="text-xl font-bold mb-1">大理海景度假酒店</h3>
+<div class="text-yellow-500 mb-2">★★★★★ 4.8分</div>
+<p class="text-gray-600 mb-2">大理洱海生态廊道</p>
+<div class="flex gap-2 flex-wrap">
+<span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">海景房</span>
+<span class="bg-emerald-100 text-emerald-600 px-3 py-1 rounded-full text-sm">免费停车</span>
+</div>
+</div>
+<div class="mt-4 text-right">
+<div class="text-red-500 text-2xl font-bold">¥988</div>
+<div class="text-gray-500 text-sm">起/晚</div>
+</div>
+</div>
+</div>
+</a>
+
+<!-- 酒店3 -->
+<a href="hotel-detail.html">
+<div class="hotel-card bg-white rounded-2xl overflow-hidden shadow flex flex-col">
+<img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267" class="h-64 w-full object-cover"/>
+<div class="p-4 flex-1 flex flex-col justify-between">
+<div>
+<h3 class="text-xl font-bold mb-1">香格里拉松赞林卡</h3>
+<div class="text-yellow-500 mb-2">★★★★★ 4.9分</div>
+<p class="text-gray-600 mb-2">迪庆州 · 独克宗古城</p>
+<div class="flex gap-2 flex-wrap">
+<span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm">藏式体验</span>
+<span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">高端度假</span>
+</div>
+</div>
+<div class="mt-4 text-right">
+<div class="text-red-500 text-2xl font-bold">¥1580</div>
+<div class="text-gray-500 text-sm">起/晚</div>
+</div>
+</div>
+</div>
+</a>
 
 </section>
-<section class="max-w-7xl mx-auto px-6 py-10">
 
-<h2 class="text-3xl font-bold mb-8">
-房型选择
-</h2>
-
-<div class="grid md:grid-cols-3 gap-6">
-
-<div
-onclick="selectRoom('豪华园景房',1288)"
-class="room-card bg-white p-6 rounded-2xl shadow cursor-pointer">
-
-<h3 class="font-bold text-xl mb-2">
-豪华园景房
-</h3>
-
-<p class="text-gray-500 mb-4">
-45㎡ · 大床
-</p>
-
-<div class="text-red-500 text-2xl font-bold">
-¥1288
+<!-- Footer -->
+<footer class="bg-slate-900 text-white py-12">
+<div class="max-w-7xl mx-auto text-center">
+<p>© 2026 云南旅游官网</p>
 </div>
+</footer>
 
-</div>
-
-<div
-onclick="selectRoom('雪山景观房',1588)"
-class="room-card bg-white p-6 rounded-2xl shadow cursor-pointer">
-
-<h3 class="font-bold text-xl mb-2">
-雪山景观房
-</h3>
-
-<p class="text-gray-500 mb-4">
-55㎡ · 大床
-</p>
-
-<div class="text-red-500 text-2xl font-bold">
-¥1588
-</div>
-
-</div>
-
-<div
-onclick="selectRoom('总统套房',2888)"
-class="room-card bg-white p-6 rounded-2xl shadow cursor-pointer">
-
-<h3 class="font-bold text-xl mb-2">
-总统套房
-</h3>
-
-<p class="text-gray-500 mb-4">
-120㎡ · 双卧室
-</p>
-
-<div class="text-red-500 text-2xl font-bold">
-¥2888
-</div>
-
-</div>
-
-</div>
-
-</section>
-<section class="max-w-7xl mx-auto px-6 py-10">
-
-<h2 class="text-3xl font-bold mb-8">
-酒店设施
-</h2>
-
-<div class="grid md:grid-cols-4 gap-6">
-
-<div class="bg-white p-6 rounded-xl shadow text-center">
-🏊‍♂️
-<p class="mt-3">室外泳池</p>
-</div>
-
-<div class="bg-white p-6 rounded-xl shadow text-center">
-🍴
-<p class="mt-3">中西餐厅</p>
-</div>
-
-<div class="bg-white p-6 rounded-xl shadow text-center">
-🚗
-<p class="mt-3">免费停车</p>
-</div>
-
-<div class="bg-white p-6 rounded-xl shadow text-center">
-📶
-<p class="mt-3">免费WiFi</p>
-</div>
-
-</div>
-
-</section>
-<section class="max-w-7xl mx-auto px-6 py-10">
-
-<h2 class="text-3xl font-bold mb-8">
-住客评价
-</h2>
-
-<div class="space-y-4">
-
-<div class="bg-white rounded-xl p-6 shadow">
-
-<div class="font-bold mb-2">
-★★★★★ 张先生
-</div>
-
-<p>
-酒店环境非常棒，可以直接看到玉龙雪山。
-</p>
-
-</div>
-
-<div class="bg-white rounded-xl p-6 shadow">
-
-<div class="font-bold mb-2">
-★★★★★ 李女士
-</div>
-
-<p>
-早餐丰富，服务专业，非常值得入住。
-</p>
-
-</div>
-
-</div>
-
-</section>
+</body>
+</html>
