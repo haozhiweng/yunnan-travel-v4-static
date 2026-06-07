@@ -1,1 +1,0 @@
-# yunnan-travel-v4-static
