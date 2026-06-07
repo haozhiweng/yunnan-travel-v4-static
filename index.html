@@ -164,6 +164,32 @@
 <p class="text-gray-400 mt-2">探索彩云之南 · 发现最美云南</p>
 </div>
 </footer>
+<script>
 
+function changeImage(img){
+
+document.getElementById('mainImage').src = img.src;
+
+}
+
+function selectRoom(room,price){
+
+document.getElementById('roomPrice').innerText = price;
+
+document.querySelectorAll('.room-card').forEach(card=>{
+card.classList.remove(
+'ring-4',
+'ring-emerald-500'
+);
+});
+
+event.currentTarget.classList.add(
+'ring-4',
+'ring-emerald-500'
+);
+
+}
+
+</script>
 </body>
 </html>
