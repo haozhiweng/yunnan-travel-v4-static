@@ -1,83 +1,429 @@
-<!-- 热门攻略 -->
-<section class="max-w-7xl mx-auto py-12 px-4">
-    <h2 class="text-3xl font-bold mb-8">热门攻略</h2>
+<!DOCTYPE html>
+<html lang="zh-CN">
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- 攻略1 -->
-        <a href="community-detail.html?id=1"
-           class="block bg-white rounded-2xl shadow hover:shadow-xl transition duration-300 p-6">
-            <h3 class="text-2xl font-bold mb-3">云南5日游深度攻略</h3>
-            <p class="text-gray-500 mb-4">作者：小明</p>
-            <p class="text-gray-600 leading-relaxed mb-6">
-                详细介绍了丽江、大理、香格里拉的景点顺序和交通方式。
-            </p>
+<title>云南5日游深度攻略 - 云南旅游官网</title>
 
-            <div class="flex justify-between text-gray-500">
-                <span>👍 120</span>
-                <span>💬 35</span>
-            </div>
-        </a>
+<script src="https://cdn.tailwindcss.com"></script>
 
-        <!-- 攻略2 -->
-        <a href="community-detail.html?id=2"
-           class="block bg-white rounded-2xl shadow hover:shadow-xl transition duration-300 p-6">
-            <h3 class="text-2xl font-bold mb-3">丽江古城夜景游玩指南</h3>
-            <p class="text-gray-500 mb-4">作者：小红</p>
-            <p class="text-gray-600 leading-relaxed mb-6">
-                推荐最佳拍照点和餐厅，以及夜间安全小贴士。
-            </p>
+</head>
 
-            <div class="flex justify-between text-gray-500">
-                <span>👍 98</span>
-                <span>💬 22</span>
-            </div>
-        </a>
+<body class="bg-gray-100">
 
-        <!-- 攻略3 -->
-        <a href="community-detail.html?id=3"
-           class="block bg-white rounded-2xl shadow hover:shadow-xl transition duration-300 p-6">
-            <h3 class="text-2xl font-bold mb-3">大理洱海自由行经验分享</h3>
-            <p class="text-gray-500 mb-4">作者：小李</p>
-            <p class="text-gray-600 leading-relaxed mb-6">
-                详细记录租车、自行车环湖及住宿选择。
-            </p>
+<!-- 顶部导航 -->
 
-            <div class="flex justify-between text-gray-500">
-                <span>👍 85</span>
-                <span>💬 18</span>
-            </div>
-        </a>
+<header class="bg-white shadow sticky top-0 z-50">
 
-        <!-- 攻略4 -->
-        <a href="community-detail.html?id=4"
-           class="block bg-white rounded-2xl shadow hover:shadow-xl transition duration-300 p-6">
-            <h3 class="text-2xl font-bold mb-3">香格里拉徒步攻略</h3>
-            <p class="text-gray-500 mb-4">作者：小王</p>
-            <p class="text-gray-600 leading-relaxed mb-6">
-                路线规划、注意事项和最佳徒步季节介绍。
-            </p>
+<div class="max-w-7xl mx-auto flex justify-between items-center p-4">
 
-            <div class="flex justify-between text-gray-500">
-                <span>👍 70</span>
-                <span>💬 12</span>
-            </div>
-        </a>
+<a href="index.html" class="text-2xl font-bold text-emerald-600">
+云南旅游
+</a>
 
-        <!-- 攻略5 -->
-        <a href="community-detail.html?id=5"
-           class="block bg-white rounded-2xl shadow hover:shadow-xl transition duration-300 p-6">
-            <h3 class="text-2xl font-bold mb-3">西双版纳热带雨林体验</h3>
-            <p class="text-gray-500 mb-4">作者：小赵</p>
-            <p class="text-gray-600 leading-relaxed mb-6">
-                推荐体验傣族风情、夜间灯光秀和景区交通。
-            </p>
+<nav class="space-x-6">
 
-            <div class="flex justify-between text-gray-500">
-                <span>👍 64</span>
-                <span>💬 10</span>
-            </div>
-        </a>
+<a href="index.html">首页</a>
+<a href="scenic.html">景点</a>
+<a href="hotel.html">酒店</a>
+<a href="ai.html">AI行程</a>
+<a href="community.html" class="text-emerald-600 font-bold">攻略社区</a>
 
-    </div>
+</nav>
+
+</div>
+
+</header>
+
+<!-- 封面 -->
+
+<section class="relative h-[500px]">
+
+<img
+src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1600"
+class="w-full h-full object-cover"
+>
+
+<div class="absolute inset-0 bg-black/40"></div>
+
+<div class="absolute bottom-20 left-0 right-0">
+
+<div class="max-w-6xl mx-auto px-4 text-white">
+
+<h1 class="text-5xl font-bold mb-4">
+云南5日游深度攻略
+</h1>
+
+<p class="text-xl opacity-90">
+丽江 · 大理 · 香格里拉经典路线
+</p>
+
+</div>
+
+</div>
+
 </section>
+
+<!-- 面包屑 -->
+
+<div class="max-w-6xl mx-auto px-4 py-6 text-gray-500">
+
+<a href="index.html">首页</a>
+
+>
+
+<a href="community.html">攻略社区</a>
+
+>
+
+<span>云南5日游深度攻略</span>
+
+</div>
+
+<!-- 主体 -->
+
+<div class="max-w-6xl mx-auto px-4 pb-16">
+
+<div class="grid lg:grid-cols-4 gap-8">
+
+<!-- 左侧正文 -->
+
+<div class="lg:col-span-3">
+
+<div class="bg-white rounded-2xl shadow p-8">
+
+<!-- 作者 -->
+
+<div class="flex items-center justify-between border-b pb-6 mb-6">
+
+<div class="flex items-center gap-4">
+
+<img
+src="https://i.pravatar.cc/100"
+class="w-14 h-14 rounded-full"
+>
+
+<div>
+
+<h3 class="font-bold">
+小明
+</h3>
+
+<p class="text-gray-500 text-sm">
+资深旅行达人
+</p>
+
+</div>
+
+</div>
+
+<div class="text-right text-gray-500 text-sm">
+
+<div>发布时间：2026-06-17</div>
+
+<div>阅读量：12,458</div>
+
+</div>
+
+</div>
+
+<!-- 操作按钮 -->
+
+<div class="flex gap-4 mb-8">
+
+<button class="bg-emerald-500 text-white px-5 py-2 rounded-lg">
+👍 点赞 120
+</button>
+
+<button class="border px-5 py-2 rounded-lg">
+⭐ 收藏
+</button>
+
+<button class="border px-5 py-2 rounded-lg">
+📤 分享
+</button>
+
+</div>
+
+<!-- 行程概览 -->
+
+<div class="bg-emerald-50 rounded-xl p-6 mb-8">
+
+<h2 class="text-2xl font-bold mb-4">
+行程概览
+</h2>
+
+<ul class="space-y-2">
+
+<li>Day1：抵达丽江 → 丽江古城</li>
+
+<li>Day2：玉龙雪山 → 蓝月谷</li>
+
+<li>Day3：大理古城 → 洱海环湖</li>
+
+<li>Day4：香格里拉 → 独克宗古城</li>
+
+<li>Day5：普达措国家公园 → 返程</li>
+
+</ul>
+
+</div>
+
+<!-- 正文 -->
+
+<h2 class="text-3xl font-bold mb-6">
+正文攻略
+</h2>
+
+<div class="space-y-8 text-gray-700 leading-8">
+
+<p>
+
+云南是很多旅行者向往的目的地。
+
+这里拥有雪山、湖泊、古城、民族文化以及绝美自然风光。
+
+如果你只有5天时间，这条线路非常适合首次来云南旅行。
+
+</p>
+
+<img
+src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?w=1200"
+class="rounded-xl"
+>
+
+<h3 class="text-2xl font-bold">
+Day1 丽江古城
+</h3>
+
+<p>
+
+抵达丽江后建议入住古城附近民宿。
+
+晚上漫步四方街，体验纳西文化。
+
+</p>
+
+<h3 class="text-2xl font-bold">
+Day2 玉龙雪山
+</h3>
+
+<p>
+
+建议提前预约冰川公园大索道。
+
+蓝月谷景色非常震撼。
+
+</p>
+
+<img
+src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200"
+class="rounded-xl"
+>
+
+<h3 class="text-2xl font-bold">
+Day3 洱海环湖
+</h3>
+
+<p>
+
+租车环洱海是最佳方式。
+
+推荐双廊和喜洲古镇。
+
+</p>
+
+<h3 class="text-2xl font-bold">
+Day4-5 香格里拉
+</h3>
+
+<p>
+
+感受藏族文化和高原风光。
+
+普达措国家公园值得安排半天以上时间。
+
+</p>
+
+</div>
+
+</div>
+
+<!-- 评论 -->
+
+<div class="bg-white rounded-2xl shadow p-8 mt-8">
+
+<h2 class="text-2xl font-bold mb-6">
+游客评论
+</h2>
+
+<div class="space-y-6">
+
+<div>
+
+<div class="font-bold">
+旅行小张
+</div>
+
+<p class="text-gray-600">
+非常实用，刚好下个月去云南。
+</p>
+
+</div>
+
+<div>
+
+<div class="font-bold">
+自由行玩家
+</div>
+
+<p class="text-gray-600">
+路线安排合理，收藏了。
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- 右侧 -->
+
+<div>
+
+<!-- 作者卡 -->
+
+<div class="bg-white rounded-2xl shadow p-6 mb-6">
+
+<img
+src="https://i.pravatar.cc/150"
+class="w-20 h-20 rounded-full mx-auto mb-4"
+>
+
+<h3 class="text-center font-bold text-xl">
+小明
+</h3>
+
+<p class="text-center text-gray-500">
+旅行达人
+</p>
+
+<div class="grid grid-cols-3 text-center mt-6">
+
+<div>
+
+<div class="font-bold">38</div>
+
+<div class="text-sm text-gray-500">
+攻略
+</div>
+
+</div>
+
+<div>
+
+<div class="font-bold">5.6k</div>
+
+<div class="text-sm text-gray-500">
+粉丝
+</div>
+
+</div>
+
+<div>
+
+<div class="font-bold">18k</div>
+
+<div class="text-sm text-gray-500">
+获赞
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- 推荐攻略 -->
+
+<div class="bg-white rounded-2xl shadow p-6">
+
+<h3 class="text-xl font-bold mb-4">
+相关推荐
+</h3>
+
+<div class="space-y-4">
+
+<a href="community-detail.html?id=2"
+class="block hover:text-emerald-600">
+
+丽江古城夜景游玩指南
+
+</a>
+
+<a href="community-detail.html?id=3"
+class="block hover:text-emerald-600">
+
+大理洱海自由行经验分享
+
+</a>
+
+<a href="community-detail.html?id=4"
+class="block hover:text-emerald-600">
+
+香格里拉徒步攻略
+
+</a>
+
+<a href="community-detail.html?id=5"
+class="block hover:text-emerald-600">
+
+西双版纳热带雨林体验
+
+</a>
+
+</div>
+
+</div>
+
+<!-- 返回 -->
+
+<div class="mt-6">
+
+<a href="community.html"
+class="block text-center bg-emerald-500 text-white py-3 rounded-xl">
+
+返回攻略社区
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- 页脚 -->
+
+<footer class="bg-gray-900 text-white mt-20">
+
+<div class="max-w-7xl mx-auto px-4 py-10 text-center">
+
+<p>© 2026 云南旅游官网</p>
+
+<p class="text-gray-400 mt-2">
+探索彩云之南 · 发现最美云南
+</p>
+
+</div>
+
+</footer>
+
+</body>
+</html>
