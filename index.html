@@ -1,100 +1,168 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>云南旅游官网</title>
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 font-sans">
 
-<!-- 头部导航 -->
-<header class="bg-white shadow fixed w-full z-50">
-  <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
-    <div class="text-2xl font-bold text-green-700">云南旅游</div>
-    <nav class="space-x-4">
-      <a href="index.html" class="text-gray-700 hover:text-green-700">首页</a>
-      <a href="scenic.html" class="text-gray-700 hover:text-green-700">景点</a>
-      <a href="hotel.html" class="text-gray-700 hover:text-green-700">酒店</a>
-      <a href="ai.html" class="text-gray-700 hover:text-green-700">AI行程规划</a>
-      <a href="community.html" class="text-gray-700 hover:text-green-700">攻略社区</a>
-      <a href="#" class="text-gray-700 hover:text-green-700">行程</a>
-      <a href="#" class="text-gray-700 hover:text-green-700">关于云南</a>
-    </nav>
-    <div>
-      <button class="border border-green-700 text-green-700 px-4 py-1 rounded hover:bg-green-700 hover:text-white transition">登录/注册</button>
-    </div>
-  </div>
+<body class="bg-gray-100">
+
+<!-- 顶部导航 -->
+<header class="bg-white shadow sticky top-0 z-50">
+<div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+<a href="index.html" class="text-2xl font-bold text-emerald-600">云南旅游</a>
+<nav class="space-x-6">
+<a href="index.html" class="text-emerald-600 font-bold">首页</a>
+<a href="scenic.html">景点</a>
+<a href="hotel.html">酒店</a>
+<a href="ai.html">AI行程规划</a>
+<a href="community.html">攻略社区</a>
+</nav>
+</div>
 </header>
 
-<!-- Banner -->
-<section class="relative h-screen bg-cover bg-center" style="background-image:url('assets/images/banner/banner.jpg');">
-  <div class="absolute inset-0 bg-black bg-opacity-30"></div>
-  <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
-    <h1 class="text-5xl font-bold mb-4">心之所向，梦之云南</h1>
-    <p class="text-xl mb-8">遇见彩云之南，探索自然与人文的完美融合</p>
-    <div class="bg-white bg-opacity-90 rounded-xl p-4 w-full max-w-3xl">
-      <form class="flex flex-col md:flex-row gap-2">
-        <input type="text" placeholder="目的地 / 景点 / 酒店" class="flex-1 p-2 border rounded">
-        <input type="date" class="p-2 border rounded">
-        <input type="date" class="p-2 border rounded">
-        <button type="submit" class="bg-green-700 text-white px-4 rounded">搜索</button>
-      </form>
-      <div class="mt-2 text-sm text-gray-700">热门搜索：丽江古城、泸沽湖、玉龙雪山、大理古城、香格里拉</div>
-    </div>
-  </div>
+<!-- Banner + 搜索 -->
+<section class="relative h-[550px]">
+<img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1600" class="w-full h-full object-cover">
+<div class="absolute inset-0 bg-black/40"></div>
+<div class="absolute top-1/3 left-0 right-0 text-center px-4">
+<h1 class="text-5xl text-white font-bold mb-4">心之所向，梦之云南</h1>
+<p class="text-xl text-white opacity-90 mb-6">遇见彩云之南，探索自然与人文的完美融合</p>
+<!-- 搜索框 -->
+<div class="bg-white rounded-xl p-6 max-w-4xl mx-auto shadow-lg">
+<ul class="flex border-b mb-4 text-gray-500">
+<li class="mr-6 pb-2 border-b-2 border-emerald-500 font-bold">全部</li>
+<li class="mr-6 pb-2 hover:border-b-2 hover:border-emerald-500 cursor-pointer">景点</li>
+<li class="mr-6 pb-2 hover:border-b-2 hover:border-emerald-500 cursor-pointer">酒店</li>
+<li class="mr-6 pb-2 hover:border-b-2 hover:border-emerald-500 cursor-pointer">攻略</li>
+<li class="pb-2 hover:border-b-2 hover:border-emerald-500 cursor-pointer">行程</li>
+</ul>
+<div class="flex flex-col md:flex-row gap-4">
+<input type="text" placeholder="目的地 / 景点 / 酒店" class="flex-1 border p-2 rounded-lg">
+<input type="date" class="border p-2 rounded-lg">
+<input type="date" class="border p-2 rounded-lg">
+<input type="number" placeholder="人数" class="border p-2 rounded-lg w-24">
+<button class="bg-emerald-500 text-white px-6 rounded-lg">搜索</button>
+</div>
+<div class="mt-2 text-gray-500 text-sm">
+热门搜索：
+<a href="#" class="underline mr-2">丽江古城</a>
+<a href="#" class="underline mr-2">泸沽湖</a>
+<a href="#" class="underline mr-2">玉龙雪山</a>
+<a href="#" class="underline mr-2">大理古城</a>
+<a href="#" class="underline">香格里拉</a>
+</div>
+</div>
+</div>
 </section>
 
-<!-- 功能入口 -->
-<section class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-6 gap-4 mt-12 px-4">
-  <div class="text-center p-4 bg-white rounded shadow">景点浏览</div>
-  <div class="text-center p-4 bg-white rounded shadow">AI行程规划</div>
-  <div class="text-center p-4 bg-white rounded shadow">酒店预订</div>
-  <div class="text-center p-4 bg-white rounded shadow">攻略社区</div>
-  <div class="text-center p-4 bg-white rounded shadow">行程分享</div>
-  <div class="text-center p-4 bg-white rounded shadow">响应式设计</div>
+<!-- 功能模块 -->
+<section class="max-w-7xl mx-auto px-4 -mt-20 relative z-10 grid grid-cols-2 md:grid-cols-6 gap-4">
+<div class="bg-white rounded-xl shadow text-center p-4">
+<p>景点浏览</p>
+</div>
+<div class="bg-white rounded-xl shadow text-center p-4">
+<p>AI行程规划</p>
+</div>
+<div class="bg-white rounded-xl shadow text-center p-4">
+<p>酒店预订</p>
+</div>
+<div class="bg-white rounded-xl shadow text-center p-4">
+<p>攻略社区</p>
+</div>
+<div class="bg-white rounded-xl shadow text-center p-4">
+<p>行程分享</p>
+</div>
+<div class="bg-white rounded-xl shadow text-center p-4">
+<p>响应式设计</p>
+</div>
 </section>
 
 <!-- 热门目的地 -->
-<section class="max-w-7xl mx-auto px-4 mt-12">
-  <h2 class="text-3xl font-bold mb-6">热门目的地</h2>
-  <div class="grid md:grid-cols-5 gap-6">
-    <a href="scenic.html" class="bg-white rounded shadow p-4 hover:shadow-lg transition">
-      <img src="assets/images/scenic/1.jpg" alt="丽江古城" class="rounded mb-2">
-      <h3 class="font-bold">丽江古城</h3>
-      <p class="text-gray-600 text-sm">热门景点推荐</p>
-      <p class="text-gray-500 text-xs">丽江市</p>
-    </a>
-    <a href="scenic.html" class="bg-white rounded shadow p-4 hover:shadow-lg transition">
-      <img src="assets/images/scenic/2.jpg" alt="大理古城" class="rounded mb-2">
-      <h3 class="font-bold">大理古城</h3>
-      <p class="text-gray-600 text-sm">自由行精选</p>
-      <p class="text-gray-500 text-xs">大理白族自治州</p>
-    </a>
-    <a href="scenic.html" class="bg-white rounded shadow p-4 hover:shadow-lg transition">
-      <img src="assets/images/scenic/3.jpg" alt="玉龙雪山" class="rounded mb-2">
-      <h3 class="font-bold">玉龙雪山</h3>
-      <p class="text-gray-600 text-sm">壮丽雪山风光</p>
-      <p class="text-gray-500 text-xs">丽江市</p>
-    </a>
-    <a href="scenic.html" class="bg-white rounded shadow p-4 hover:shadow-lg transition">
-      <img src="assets/images/scenic/4.jpg" alt="泸沽湖" class="rounded mb-2">
-      <h3 class="font-bold">泸沽湖</h3>
-      <p class="text-gray-600 text-sm">高原明珠</p>
-      <p class="text-gray-500 text-xs">丽江市</p>
-    </a>
-    <a href="scenic.html" class="bg-white rounded shadow p-4 hover:shadow-lg transition">
-      <img src="assets/images/scenic/5.jpg" alt="香格里拉" class="rounded mb-2">
-      <h3 class="font-bold">香格里拉</h3>
-      <p class="text-gray-600 text-sm">深度游路线</p>
-      <p class="text-gray-500 text-xs">迪庆藏族自治州</p>
-    </a>
-  </div>
+<section class="max-w-7xl mx-auto px-4 py-16">
+<h2 class="text-3xl font-bold mb-6">热门目的地</h2>
+<div class="grid md:grid-cols-5 gap-6">
+<a href="scenic.html" class="block rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+<img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600" class="w-full h-48 object-cover">
+<div class="p-4">
+<h3 class="font-bold mb-1">丽江古城</h3>
+<p class="text-gray-500 text-sm">丽江市</p>
+</div>
+</a>
+<a href="scenic.html" class="block rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+<img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600" class="w-full h-48 object-cover">
+<div class="p-4">
+<h3 class="font-bold mb-1">大理古城</h3>
+<p class="text-gray-500 text-sm">大理白族自治州</p>
+</div>
+</a>
+<a href="scenic.html" class="block rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+<img src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?w=600" class="w-full h-48 object-cover">
+<div class="p-4">
+<h3 class="font-bold mb-1">玉龙雪山</h3>
+<p class="text-gray-500 text-sm">丽江市</p>
+</div>
+</a>
+<a href="scenic.html" class="block rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+<img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600" class="w-full h-48 object-cover">
+<div class="p-4">
+<h3 class="font-bold mb-1">泸沽湖</h3>
+<p class="text-gray-500 text-sm">丽江市</p>
+</div>
+</a>
+<a href="scenic.html" class="block rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
+<img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600" class="w-full h-48 object-cover">
+<div class="p-4">
+<h3 class="font-bold mb-1">香格里拉</h3>
+<p class="text-gray-500 text-sm">迪庆藏族自治州</p>
+</div>
+</a>
+</div>
 </section>
 
-<!-- 底部 -->
-<footer class="bg-gray-900 text-white text-center p-6 mt-12">
-  © 2026 云南旅游官网
+<!-- 热门攻略模块 -->
+<section class="max-w-7xl mx-auto px-4 py-16">
+<h2 class="text-3xl font-bold mb-6">热门攻略</h2>
+<div class="grid md:grid-cols-5 gap-6">
+<a href="community-detail.html?id=1" class="block rounded-xl overflow-hidden shadow-lg p-4 bg-white hover:shadow-xl">
+<h3 class="font-bold mb-1">云南5日游深度攻略</h3>
+<p class="text-gray-500 text-sm">作者：小明</p>
+<p class="text-gray-600 text-sm mt-2">详细介绍了丽江、大理、香格里拉的景点顺序和交通方式。</p>
+<div class="flex justify-between text-gray-500 mt-2 text-sm">
+<span>👍 120</span>
+<span>💬 35</span>
+</div>
+</a>
+<a href="community-detail.html?id=2" class="block rounded-xl overflow-hidden shadow-lg p-4 bg-white hover:shadow-xl">
+<h3 class="font-bold mb-1">丽江古城夜景游玩指南</h3>
+<p class="text-gray-500 text-sm">作者：小红</p>
+<p class="text-gray-600 text-sm mt-2">推荐最佳拍照点和餐厅，以及夜间安全小贴士。</p>
+<div class="flex justify-between text-gray-500 mt-2 text-sm">
+<span>👍 98</span>
+<span>💬 22</span>
+</div>
+</a>
+<a href="community-detail.html?id=3" class="block rounded-xl overflow-hidden shadow-lg p-4 bg-white hover:shadow-xl">
+<h3 class="font-bold mb-1">大理洱海自由行经验分享</h3>
+<p class="text-gray-500 text-sm">作者：小李</p>
+<p class="text-gray-600 text-sm mt-2">详细记录租车、自行车环湖及住宿选择。</p>
+<div class="flex justify-between text-gray-500 mt-2 text-sm">
+<span>👍 85</span>
+<span>💬 18</span>
+</div>
+</a>
+</div>
+</section>
+
+<!-- 页脚 -->
+<footer class="bg-gray-900 text-white mt-20">
+<div class="max-w-7xl mx-auto px-4 py-10 text-center">
+<p>© 2026 云南旅游官网</p>
+<p class="text-gray-400 mt-2">探索彩云之南 · 发现最美云南</p>
+</div>
 </footer>
 
 </body>
