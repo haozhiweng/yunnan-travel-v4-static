@@ -3,8 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>丽江悦榕庄 - 云南旅游官网</title>
+<title>丽江悦榕庄 - 云南旅游官网 V5.0</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<style>
+body { background:#f5f7fa; }
+.hotel-card { transition:.3s; }
+.hotel-card:hover { transform:translateY(-4px); box-shadow:0 12px 28px rgba(0,0,0,.15); }
+.room-card { cursor:pointer; transition:.3s; }
+.room-card:hover { transform:scale(1.03); }
+.ring-highlight { ring:4px ring-emerald-500; }
+</style>
 </head>
 <body class="bg-gray-50">
 
@@ -34,15 +42,21 @@
 </div>
 </div>
 
-<!-- 酒店信息 & 预订 -->
+<!-- 酒店信息 & 收藏 & 预订 -->
 <div>
 <div class="bg-white rounded-2xl shadow-lg p-6 space-y-4">
+<div class="flex justify-between items-center">
 <h1 class="text-3xl font-bold">丽江悦榕庄</h1>
+<button onclick="toggleFavorite()" id="favoriteBtn" class="border rounded-lg px-4 py-2">🤍 收藏酒店</button>
+</div>
+
 <div class="flex items-center gap-2">
 <span class="bg-yellow-500 text-white px-3 py-1 rounded">4.9</span>
 <span class="text-gray-600">超棒 · 2386条点评</span>
 </div>
+
 <p class="text-gray-600">云南省丽江市古城区束河古镇</p>
+
 <div class="flex flex-wrap gap-2">
 <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full">免费早餐</span>
 <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full">雪山景观</span>
@@ -52,16 +66,18 @@
 <!-- 房型预订表格 -->
 <div class="space-y-2 mt-4">
 <label class="block font-semibold">入住日期</label>
-<input type="date" class="w-full border p-2 rounded">
+<input type="date" id="checkin" class="w-full border p-2 rounded">
 <label class="block font-semibold">离店日期</label>
-<input type="date" class="w-full border p-2 rounded">
+<input type="date" id="checkout" class="w-full border p-2 rounded">
 <label class="block font-semibold">入住人数</label>
-<select class="w-full border p-2 rounded">
+<select id="guests" class="w-full border p-2 rounded">
 <option>1位成人</option>
 <option>2位成人</option>
 <option>2位成人 + 1位儿童</option>
 </select>
-<button class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-bold">立即预订</button>
+<button onclick="calculatePrice()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-bold">计算总价</button>
+<div id="priceResult" class="mt-3 text-2xl font-bold text-red-500"></div>
+<button class="w-full bg-red-500 hover:bg-red-600 text-white py-3 rounded-xl font-bold mt-4">立即预订</button>
 </div>
 
 </div>
@@ -71,7 +87,7 @@
 <!-- 房型选择 -->
 <section>
 <h2 class="text-3xl font-bold mb-6">房型选择</h2>
-<div class="grid md:grid-cols-3 gap-6">
+<div class="grid md:grid-cols-3 gap-6 mb-10">
 <div onclick="selectRoom('豪华园景房',1288)" class="room-card bg-white p-6 rounded-2xl shadow cursor-pointer">
 <h3 class="font-bold text-xl mb-2">豪华园景房</h3>
 <p class="text-gray-500 mb-4">45㎡ · 大床</p>
@@ -93,7 +109,7 @@
 <!-- 酒店设施 -->
 <section>
 <h2 class="text-3xl font-bold mb-6">酒店设施</h2>
-<div class="grid md:grid-cols-4 gap-6">
+<div class="grid md:grid-cols-4 gap-6 mb-10">
 <div class="bg-white p-6 rounded-xl shadow text-center">🏊‍♂️<p class="mt-3">室外泳池</p></div>
 <div class="bg-white p-6 rounded-xl shadow text-center">🍴<p class="mt-3">中西餐厅</p></div>
 <div class="bg-white p-6 rounded-xl shadow text-center">🚗<p class="mt-3">免费停车</p></div>
@@ -104,16 +120,15 @@
 <!-- 酒店介绍 -->
 <section>
 <h2 class="text-3xl font-bold mb-4">酒店介绍</h2>
-<p class="bg-white p-6 rounded-xl shadow">
+<p class="bg-white p-6 rounded-xl shadow mb-10">
 丽江悦榕庄位于玉龙雪山脚下，融合丽江纳西族文化，提供高品质住宿体验。交通便利，酒店周边景点丰富，适合家庭及情侣入住。
 </p>
 </section>
 
-<!-- 地图 -->
+<!-- 酒店地图 -->
 <section>
 <h2 class="text-3xl font-bold mb-4">酒店地图</h2>
-<iframe class="w-full h-96 rounded-xl shadow"
-src="https://maps.google.com/maps?q=Yunnan%20Lijiang%20Banyan&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+<iframe class="w-full h-96 rounded-xl shadow" src="https://maps.google.com/maps?q=Yunnan%20Lijiang%20Banyan&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
 </section>
 
 <!-- 最近浏览 -->
@@ -146,14 +161,41 @@ src="https://maps.google.com/maps?q=Yunnan%20Lijiang%20Banyan&t=&z=13&ie=UTF8&iw
 </footer>
 
 <script>
+// 轮播图切换
 function changeImage(img){ document.getElementById('mainImage').src = img.src; }
+
+// 房型选择
 function selectRoom(room,price){
-document.getElementById('roomPrice').innerText = price;
+document.getElementById('priceResult').innerText = "当前房型："+room+" ¥"+price;
 document.querySelectorAll('.room-card').forEach(card=>{
 card.classList.remove('ring-4','ring-emerald-500');
 });
 event.currentTarget.classList.add('ring-4','ring-emerald-500');
 }
+
+// 收藏酒店
+function toggleFavorite(){
+const btn=document.getElementById('favoriteBtn');
+if(btn.innerText.includes('🤍')){ btn.innerText='❤️ 已收藏'; }
+else { btn.innerText='🤍 收藏酒店'; }
+}
+
+// 动态计算价格
+function calculatePrice(){
+const checkin=new Date(document.getElementById('checkin').value);
+const checkout=new Date(document.getElementById('checkout').value);
+const guests=document.getElementById('guests').value;
+const selectedRoom=document.querySelector('.room-card.ring-4')||document.querySelector('.room-card');
+let price=parseInt(selectedRoom?selectedRoom.querySelector('.text-red-500')?.innerText.replace('¥','')||1288:1288);
+const days=(checkout-checkin)/(1000*60*60*24);
+if(days<=0){ alert('请选择正确日期'); return; }
+const total=days*price;
+document.getElementById('priceResult').innerText='入住 '+days+' 晚，总价 ¥'+total.toLocaleString();
+}
+
+// 浏览记录
+const viewedHotel='丽江悦榕庄';
+localStorage.setItem('lastViewedHotel',viewedHotel);
 </script>
 
 </body>
