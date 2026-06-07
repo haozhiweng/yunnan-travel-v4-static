@@ -1,19 +1,322 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI行程规划</title>
-<script src="https://cdn.tailwindcss.com"></script></head>
-<body class="bg-gray-50">
-<header class="bg-emerald-600 text-white p-6 flex justify-between">
-<h1 class="text-3xl font-bold">AI行程规划</h1>
-<nav class="space-x-4"><a href="index.html">首页</a></nav>
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI行程规划助手 - 云南旅游官网</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-slate-100">
+
+<!-- 顶部导航 -->
+
+<header class="bg-emerald-600 text-white">
+
+<div class="max-w-7xl mx-auto flex justify-between items-center p-5">
+
+<a href="index.html" class="text-3xl font-bold">
+云南旅游官网
+</a>
+
+<nav class="space-x-6">
+
+<a href="index.html">首页</a>
+
+<a href="scenic.html">景点</a>
+
+<a href="hotel.html">酒店</a>
+
+<a href="ai.html" class="font-bold">AI行程规划</a>
+
+<a href="community.html">攻略社区</a>
+
+</nav>
+
+</div>
+
 </header>
-<main class="max-w-6xl mx-auto p-8">
-<textarea class="w-full p-2 border rounded" rows="6" placeholder="输入出发地、天数、预算等"></textarea>
-<button class="mt-4 bg-emerald-600 text-white p-2 rounded">生成行程</button>
-</main>
-<footer class="bg-gray-900 text-white text-center p-6">
-© 2026 云南旅游官网
+
+<!-- Banner -->
+
+<section class="bg-gradient-to-r from-emerald-500 to-cyan-500 text-white py-16">
+
+<div class="max-w-7xl mx-auto px-6">
+
+<h1 class="text-5xl font-bold mb-4">
+AI 云南旅行规划师
+</h1>
+
+<p class="text-xl">
+输入出发地、预算和天数，智能生成云南旅游路线
+</p>
+
+</div>
+
+</section>
+
+<!-- 主体 -->
+
+<section class="max-w-7xl mx-auto py-10 px-6">
+
+<div class="grid lg:grid-cols-3 gap-8">
+
+<!-- 左侧参数 -->
+
+<div class="bg-white rounded-3xl shadow-lg p-6 h-fit">
+
+<h2 class="text-2xl font-bold mb-6">
+旅行信息
+</h2>
+
+<label class="block mb-2 font-medium">
+出发城市
+</label>
+
+<input
+id="city"
+type="text"
+placeholder="例如：上海"
+class="w-full border rounded-xl p-3 mb-4">
+
+<label class="block mb-2 font-medium">
+预算
+</label>
+
+<select
+id="budget"
+class="w-full border rounded-xl p-3 mb-4">
+
+<option>3000元以内</option>
+<option>3000-5000元</option>
+<option>5000-8000元</option>
+<option>8000元以上</option>
+
+</select>
+
+<label class="block mb-2 font-medium">
+旅行天数
+</label>
+
+<select
+id="days"
+class="w-full border rounded-xl p-3 mb-6">
+
+<option>3天</option>
+<option>5天</option>
+<option>7天</option>
+<option>10天</option>
+
+</select>
+
+<button
+onclick="generatePlan()"
+class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-4 rounded-xl font-bold">
+
+生成行程
+
+</button>
+
+</div>
+
+<!-- 右侧聊天区 -->
+
+<div class="lg:col-span-2">
+
+<div class="bg-white rounded-3xl shadow-lg overflow-hidden">
+
+<!-- 顶部 -->
+
+<div class="bg-slate-900 text-white p-5">
+
+<h2 class="text-xl font-bold">
+AI旅行顾问
+</h2>
+
+</div>
+
+<!-- 对话 -->
+
+<div
+id="chatBox"
+class="p-6 h-[600px] overflow-y-auto space-y-5">
+
+<div class="flex">
+
+<div class="bg-slate-200 rounded-2xl p-4 max-w-lg">
+
+你好 👋
+
+我是云南旅游AI规划师。
+
+请输入你的预算、出发地和旅行天数。
+
+我将为你生成专属路线。
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- 推荐路线 -->
+
+<section class="max-w-7xl mx-auto px-6 pb-20">
+
+<h2 class="text-3xl font-bold mb-8">
+热门路线推荐
+</h2>
+
+<div class="grid md:grid-cols-3 gap-8">
+
+<div class="bg-white rounded-2xl p-6 shadow">
+
+<h3 class="font-bold text-xl mb-3">
+丽江 + 大理
+</h3>
+
+<p class="text-gray-600">
+5天经典路线
+</p>
+
+</div>
+
+<div class="bg-white rounded-2xl p-6 shadow">
+
+<h3 class="font-bold text-xl mb-3">
+香格里拉深度游
+</h3>
+
+<p class="text-gray-600">
+7天高原风光路线
+</p>
+
+</div>
+
+<div class="bg-white rounded-2xl p-6 shadow">
+
+<h3 class="font-bold text-xl mb-3">
+西双版纳度假
+</h3>
+
+<p class="text-gray-600">
+4天热带雨林路线
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<footer class="bg-slate-900 text-white py-8 text-center">
+
+<p>
+© 2026 云南旅游官网 V4.0
+</p>
+
 </footer>
+
+<script>
+
+function generatePlan(){
+
+const city =
+document.getElementById('city').value || '您的城市';
+
+const budget =
+document.getElementById('budget').value;
+
+const days =
+document.getElementById('days').value;
+
+const chat =
+document.getElementById('chatBox');
+
+chat.innerHTML += `
+
+<div class="flex justify-end">
+
+<div class="bg-emerald-600 text-white rounded-2xl p-4 max-w-lg">
+
+出发城市：${city}<br>
+
+预算：${budget}<br>
+
+天数：${days}
+
+</div>
+
+</div>
+
+`;
+
+chat.innerHTML += `
+
+<div class="flex">
+
+<div class="bg-slate-200 rounded-2xl p-4 max-w-xl">
+
+<h3 class="font-bold mb-2">
+
+AI推荐路线
+
+</h3>
+
+Day1：
+昆明 → 滇池 → 南屏街
+
+<br><br>
+
+Day2：
+大理古城 → 洱海环湖
+
+<br><br>
+
+Day3：
+丽江古城 → 黑龙潭
+
+<br><br>
+
+Day4：
+玉龙雪山
+
+<br><br>
+
+Day5：
+束河古镇 → 返回
+
+<br><br>
+
+预算预计：
+${budget}
+
+</div>
+
+</div>
+
+`;
+
+chat.scrollTop = chat.scrollHeight;
+
+}
+
+</script>
+
 </body>
+
 </html>
